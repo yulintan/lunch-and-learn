@@ -1,0 +1,246 @@
+
+Advanced Concurrency
+Performane improvement
+15 Aug 2019
+Tags: concurrency, thread, goroutine, channel, mutex, async
+
+Author Yulin Tan
+Mayhem Team
+yulin@boldapps.net
+
+
+* What is concurrency
+
+"In computer science, concurrency is the ability of different parts or units of a program, algorithm, or problem to be executed out-of-order or in partial order, without affecting the final outcome."                                                             -- wikipedia
+
+- out-of-order or in partial order
+- without affecting the final outcome
+
+
+
+* Why concurrency
+
+- Reduce execution time
+- Decoupled components
+- Use device resources efficiently
+- Maintainable
+
+
+
+* Process vs Thread
+
+They are both machine instructions that is or will be executing by your computer.
+Every program creates a process and each Process is given an initial Thread.
+A thread can create other threads.
+
+Process:
+- A process is larger than a thread and it contains multiple threads.
+- A completed program or heavyweight task
+e.g. phpStorm, google chrome, slack, ...
+
+Thread:
+- A thread can do anything that a process can do.
+- Lightweight task
+- multiple threads for one purpose
+
+
+
+* Threads Diagram
+
+.image images/multithreading.png _ 500
+
+
+
+* Process vs Thread (Examples)
+
+.play process-and-thread/main.go /START OMIT/,/END OMIT/
+
+
+
+* Thread Schedulling
+
+CPU executes multiple threads in a schedulling algorithm
+
+- Scheduler is unpredictable
+- App should control the async and sync
+
+
+
+* Goroutine vs Thread
+
+A goroutine is a lightweight thread managed by the Go runtime.
+
+- Goorutine is cheap
+- Goroutine is very similar to a thread
+- Goroutine is managed by go scheduler and thread is managed by os scheduler
+- If a goroutine or thread is blocking, the scheduler will start a new thread to handle the other goroutines/threads until the blocking one stops blocking.
+
+
+
+* Go runtime
+
+Communicate with Go runtime system, such as
+
+- Get NumCPU, GOROOT, NumGoroutine, ...
+- Set GOMAXPROCS
+- Control goroutine behaviors such as Gosched() and Goexit()
+
+[[https://golang.org/pkg/runtime/]]
+
+
+
+* Threads blocking
+
+.play goroutine-block/main.go /START OMIT/,/END OMIT/ HLxxx
+
+
+
+* Threads Diagram
+
+.image images/multithreading2.png _ 700
+
+
+
+* Gosched
+
+Gosched yields the processor
+.play gosched/main.go /START OMIT/,/END OMIT/ HLxxx
+
+
+
+* Race condition
+
+A reace condition or race hazard is a undesirable situation caused by multiple operations occurs on the same resource in a random sequence.
+
+
+
+* Race condition (Examples)
+
+.play goroutine-race-condition/main.go /START OMIT/,/END OMIT/
+
+
+
+* Race condition (single process examples)
+
+.play goroutine-race-condition_single/main.go /START OMIT/,/END OMIT/ HLxxx
+
+
+
+* Race condition (Diagram)
+
+.image images/race_condition.png _ 850
+
+
+
+* 
+
+.image images/race_condition_bike.png _ 700
+
+
+
+* Race condition (database)
+
+.code goroutine-race-condition/db_race.go /^func /,/^}/ HLxxx
+
+
+
+* 
+
+.image images/gopher_fire.png _ 500
+
+
+
+* 
+
+.image images/gopher_fine.png _ 500
+
+
+
+* Control your thread
+
+- Share memory by communicating; don't communicate by sharing memory.
+- Be careful about threads blocking other threads
+- If we need lock memory access, lock as minimal as possible
+
+
+
+* Mutex
+
+- Simple to use
+- Threads don't need to communicate
+- Has Lock() and Unlock() functions
+
+
+
+* Mutex (Example)
+
+.play mutex/main.go /START OMIT/,/END OMIT/ HLxxx
+
+
+
+* Atomic
+
+- Most primitive
+- requires greate care to use
+- used for implementing synchronization algorithms such as Mutex Lock/Unlock, WaitGroup and so on
+
+
+* Atomic (Example)
+
+.play atomic/main.go /START OMIT/,/END OMIT/ HLxxx
+
+
+
+* WaitGroup
+
+- wait goroutines to finish
+
+
+
+* WaitGroup (Example)
+
+.play waitgroup/main.go /START OMIT/,/END OMIT/ HLxxx
+
+
+
+* Channel & Goroutine
+
+.image images/channel_goroutine.png _ 500
+
+
+* Channel
+
+- "Channels are a typed conduit through which you can send and receive values"
+- Pass data between goroutines
+
+    ch <- v    // Send v to channel ch.
+    v := <-ch  // Receive from ch, and
+               // assign value to v.
+
+- Go’s official documentation states that “A common Go newbie mistake is to over-use channels and goroutines just because it’s possible, and/or because it’s fun.”
+- Communication using channels to achieve synchronisation
+- Real Case in Mayhem for cancelling cron job (product_install_handler.go)
+
+
+
+* Channel (Example)
+
+.play goroutine/main.go /START OMIT/,/END OMIT/ HLxxx
+
+
+
+* More about Channel 
+
+- Channel Syncrhonization
+.link https://gobyexample.com/channel-synchronization
+
+- Channel Directions
+.link https://gobyexample.com/channel-directions
+
+- Non-Blocking Channel
+.link https://gobyexample.com/non-blocking-channel-operations
+
+- Channel Buffering
+.link https://gobyexample.com/channel-buffering
+
+
