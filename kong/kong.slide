@@ -1,0 +1,192 @@
+Kong
+API Gateway
+
+09 June 2020
+Tags: kong, api gateway, api middleware, reverse proxy
+
+Yulin Tan
+
+
+
+* What is kong
+
+- A scalable layer on top of your servers
+- Increase security
+- Distribute workloads to the most appropriate server
+- Caching, rate limiting and so on
+
+
+
+* Kong Architecture
+
+.image images/kong-architecture.jpg _ 850
+
+
+
+* Kong for kubernetes
+
+- Install
+    $ kubectl create -f https://bit.ly/k4k8s
+- Expose it
+    $ minikube {-p cluster-name} service -n kong kong-proxy
+
+- You should see something like this when you curl the kong-proxy endpoint
+
+  curl http://{minikube-ip}:{kong-proxy-port}
+
+  {"message":"no Route matched with those values"}
+
+
+
+
+* Setup an echo-server
+
+- Apply echo deploy and service
+    $ kubectl apply -f https://bit.ly/echo-service
+
+- Test it
+    $ k port-forward deploy/echo 8080:8080
+
+
+
+* Basic proxy
+- Create an Ingress rule to proxy the echo-server created previously:
+    $ echo "
+    apiVersion: extensions/v1beta1
+    kind: Ingress
+    metadata:
+      name: demo
+    spec:
+      rules:
+      - http:
+          paths:
+          - path: /foo
+            backend:
+              serviceName: echo
+              servicePort: 80
+    " | kubectl apply -f -
+
+
+
+* Kong plugins
+
+.iframe https://docs.konghq.com/hub/ 1000 850
+
+
+
+* JWT Plugin
+
+- Create jwt plugin
+
+    $ echo "
+    apiVersion: configuration.konghq.com/v1
+    kind: KongPlugin
+    metadata:
+      annotations:
+      name: app-jwt
+      namespace: default
+    plugin: jwt
+    " | kubectl apply -f -
+
+
+
+* JWT Plugin
+
+- Apply jwt plugin to ingress
+    $ kubectl patch ingress demo \
+      -p '{"metadata":{"annotations":{"plugins.konghq.com": "app-jwt"}}}'
+
+
+
+* JWT Consumer
+
+- Create JWT consumer
+- You need to associate a credential to an existing Consumer object. A Consumer can have many credentials
+
+    $ echo "
+    apiVersion: configuration.konghq.com/v1
+    credentials:
+    - app-user-jwt
+    kind: KongConsumer
+    metadata:
+      annotations:
+      name: plain-user
+      namespace: default
+    username: plain-user
+    " | kubectl apply -f -
+
+
+
+* JWT Credentails
+
+- Type, Algorithmes, Secret, Payload
+
+.iframe https://jwt.io/ 800 1000
+
+
+
+* JWT Credentails
+
+- Store JWT credentails in k8s secret
+
+    $ echo "
+    apiVersion: v1
+    data:
+      algorithm: SFMyNTY=
+      key: dXNlci1pc3N1ZXI=
+      kongCredType: and0
+      secret: dGVzdF9zZWNyZXQ=
+    kind: Secret
+    metadata:
+      name: app-user-jwt
+      namespace: default
+    type: Opaque
+    " | k apply -f -
+
+*** values are base64 encoded
+
+    SFMyNTY=            <===>   HS256
+    dXNlci1pc3N1ZXI=    <===>   user-issuer
+    and0                <===>   jwt
+
+
+
+* Recap steps
+
+- Create a route (k8s Ingress)
+- Create a service (echo server)
+- Create a jwt plugin
+- Apply jwt plugin to route
+- Create jwt credentail associated with consumer
+
+
+
+* Kong Objects & API
+
+- Route
+    /routes
+- Service
+    /services
+- Plugins
+    /plugins
+- Consumers
+    /consumers
+- JWT
+    /consumers/{consumer_id}/jwt
+
+
+
+* Kong Manager
+
+- Enterprise only
+- Provide UI to create Kong objects.
+- Bold 3rd party authentication
+
+
+
+* Kong Manager
+
+.image images/kong-manager.png _ 850
+
+
+.link https://medium.com/@tselentispanagis/managing-microservices-and-apis-with-kong-and-konga-7d14568bb59d

@@ -1,0 +1,159 @@
+Vim everything
+Increase productivity
+
+26 Feb 2020
+Tags: vim, terminal, productivity
+
+Author Yulin Tan
+Software Engineer, BoldCommerce
+yulin@boldapps.net
+
+
+
+* Why vim
+
+Previous lunch and learn topics:
+
+- [[https://boldapps.atlassian.net/wiki/spaces/BTE/pages/228655158/Learning+Vim][Learning vim]]
+- [[https://boldapps.atlassian.net/wiki/spaces/BTE/pages/228589648/Living+in+Terminal][Living in terminal]]
+
+Additional:
+
+- Default unix editor, can not avoid
+- Is good for php if config properly
+- Do more things with less screens
+- Save costs for phpStorm and mouse batteries
+
+
+
+* Let's face it if can not avoid
+
+- Git
+.code git_squash
+
+
+
+* Let's face it if can not avoid
+
+- Kubernetes
+.code kubernetes
+
+
+
+* Vim plugins for PHP
+
+- File system explorer (NerdTree)
+- File search (fzf)
+- Auto complete (youcompleteme)
+- Auto import (phpactor)
+- Show details for functions, variables (phpactor)
+- Go to defination (phpactor)
+- Tests (vim-test)
+- Git blame (vim-fugitive)
+- Git diff split (vim-fugitive)
+- Marks (vim-signature)
+- Linting (vim-php-cs-fixer)
+
+* NerdTree
+
+ :NERDTreeToggle
+.image images/nerdtree.png _ 850
+
+
+
+* FZF
+
+ :FZF
+.image images/fzf.png _ 700
+
+
+
+* YouCompleteMe
+
+.image images/youcompleteme.png _ 850
+
+
+
+* phpactor (auto import)
+
+ :call phpactor#UseAdd()
+.image images/autoimport.png _ 650
+
+
+
+* phpactor (hover and go to defintion)
+
+ :call phpactor#Hover()
+ :call phpactor#GotoDefinition()
+.image images/hover.png _ 650
+
+
+
+* vim-test (for many languages)
+
+ :TestNearest --debug
+.image images/vim-test.png _ 600
+
+
+
+
+* vim-test (for go)
+
+ :TestNearest --debug
+.image images/gotestcode.png _ 550
+.image images/gotest.png _ 450
+
+
+
+* vim-fugitive (Gblame)
+
+ :Gblame
+.image images/gblame.png _ 850
+
+
+
+* vim-fugitive (Gblame)
+
+ :Gblame
+.image images/gblame_details.png _ 850
+
+
+
+* vim-fugitive (Gvdiffsplit)
+
+ :Gvdiffsplit develop
+.image images/gvdiffsplit.png _ 850
+
+
+
+* vim-signature (colorful marks)
+
+- set a mark a:
+  ma
+- jump to mark a:
+  'a
+
+.image images/marks.png _ 600
+
+
+* vim-php-cs-fixer (linting)
+
+ :call PhpCsFixerFixFile()
+
+
+
+* php-cs-fixer (Let's do it)
+
+- The true power of vim
+ :call CsFixer()
+.code csfixer
+
+
+
+* Fun fact, vim everything
+
+- vimium (chrome plugin)
+- slack-term
+.link https://github.com/erroneousboat/slack-term
+- sqlectron
+.link https://sqlectron.github.io/

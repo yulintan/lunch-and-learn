@@ -1,0 +1,21 @@
+pick da772ae34e Remove CI-683-fix-problem-with-plugin-error-create-logs FF
+pick 6e04afddd4 Added new split order job
+pick f5a653e932 big yikes but big necessary
+pick 9a3ef149b9 CASHINT-221 Update get order endpoint example response
+pick bae86a9ff6 Removing FF CASHINT-57-add-new-widget-positions
+pick 0a3a492b79 CASHENT-158 : Add Eco fees in Order total to match the Shopify order 'total' and 'paid by customer'
+pick f2172fd913 CASHENT-235: Create Order Split Policy and pass it as a required value in Plugin/Action/SetSplitOrderCondition, to add it to Order conditions
+pick 26f2029431 CASHENT-186: Removed CASHENT-72-Add-field-to-display-line-item-properties-into-Cashier
+pick bc604dbb55 fix shop-api tests
+pick 351e74b01e fix go tests
+
+# Rebase 125cff3874..351e74b01e onto 125cff3874 (10 commands)
+#
+# Commands:
+# p, pick = use commit
+# r, reword = use commit, but edit the commit message
+# e, edit = use commit, but stop for amending
+# s, squash = use commit, but meld into previous commit
+# f, fixup = like "squash", but discard this commit's log message
+# x, exec = run command (the rest of the line) using shell
+# d, drop = remove commit

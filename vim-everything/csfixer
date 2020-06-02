@@ -1,0 +1,4 @@
+fun! CsFixer()
+    exe '!./vendor/bin/php-cs-fixer fix -v ' . expand("%")
+    exe 'edit!'
+endfun

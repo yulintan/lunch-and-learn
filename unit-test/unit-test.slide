@@ -1,0 +1,104 @@
+
+FortiCloud
+Code Quality Improvement
+## 30 Oct 2020
+Tags: test, unit test
+Summary: This is a great document you want to read.
+OldURL: former-path-for-this-doc
+
+## Author Yulin Tan
+## Cloud Engineer, Fortinet
+## ytan@fortinet.com
+
+
+
+* Unit Test
+
+- Smallest test subjecting each piece of the code
+- Isolate and mocks all the dependent services
+- Short and quick
+
+
+
+* Benefits of Unit Test
+
+- Line up our thoughts
+- Keep stable for each release and rollback
+- Test every branch of the code
+- Essential for CI/CD
+- Easier debug
+
+
+* Old Code
+
+.code -numbers code/old_code.go /START OMIT/,/END OMIT/ HLxxx
+
+
+* New Code
+
+.code -numbers code/new_code.go /START OMIT/,/END OMIT/ HLxxx
+
+
+
+
+* Test
+.code -numbers code/new_code_test.go /START OMIT_1/,/END OMIT_1/ HLxxx
+
+
+* New Code
+.code -numbers code/new_code.go /START OMIT/,/END OMIT/ HLxxx
+
+
+
+* Test 2
+.code -numbers code/new_code_test.go /START OMIT_2/,/END OMIT_2/ HLxxx
+
+
+* Improvement & bug fix for the old code
+
+- Check if id is number before bothering database
+- Check if the process should proceed if the user is not found.
+- When there are binding json issues, log the error. Then we can debug/analyse later.
+- When failing to save into db, return 500 instead of 200.
+
+.code -numbers code/old_code.go /START OMIT/,/END OMIT/ HLxxx
+
+* Traditional Test
+
+.image images/traditional_test.jpg _ 1000
+
+
+
+* Containerization
+
+- Convert to docker image
+- Apply Kubernetes for portal
+
+* Local Dev
+
+- Gradually convert each piece into docker image
+- Switch to use docker image
+
+
+
+* K8S Pod vs Node(VM)
+.image images/pod.png _ 300
+.image images/node.png _ 400
+
+
+
+* K8S Cluster
+.image images/k8s-cluster.png _ 600
+
+
+
+* K8S
+.image images/k8s.png _ 1000
+
+
+
+* TODO
+
+- Add unit test when creating new feature or modifying existing code
+- Dockerize portal, worker, redis, rabbitmq, api
+- Create K8S Cluster on 3 openstack VMs
