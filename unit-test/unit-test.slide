@@ -101,4 +101,5 @@ OldURL: former-path-for-this-doc
 
 - Add unit test when creating new feature or modifying existing code
 - Dockerize portal, worker, redis, rabbitmq, api
+- Get a private image registry
 - Create K8S Cluster on 3 openstack VMs
