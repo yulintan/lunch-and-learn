@@ -1,0 +1,282 @@
+Vim everywhere
+Increase productivity
+
+30 Nov 2022
+Tags: productivity, vim, terminal
+
+Author Yulin Tan
+Software Engineer & Site Reliability Engineer
+yulinsiyu@gmail.com
+
+
+* Agenda
+
+- What is vim and why vim
+- Vim movement
+- Vim plugins
+- Vim as a habit
+- Vim is everywhere
+
+
+* What is Vim
+
+- Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient
+- Vim movement is more like a habit that can be used anywhere else including IDEs, Terminal and web brwosers
+
+
+
+* Why vim
+
+.image images/i_use_vim.png _ 550
+
+https://www.teepublic.com/t-shirt/30941967-i-use-vim-because-i-dont-know-how-to-quit-black-te
+
+
+* Why vim
+
+- Default unix editor, unable to avoid. (VMs, git, docker containers...)
+- Lightweight and portable. Config file .vimrc can be copied over.
+- Cuting spending on IDE(Goland, PhpStorm, Pycharm, ...)
+- Plugins (vim-go, vim-ruby...)
+
+* Why I personally use Vim?
+
+.image images/ergonomics.png _ 850
+
+
+* Learning Vim
+
+- Learning vim is fun because it's game-like
+- Vim keystroke is pretty much the same as Street Fighter combos
+
+.image images/street_fighter_2.png
+
+* Rule NO. 1
+
+.image images/rule1.png _ 500
+
+* Rule NO. 2
+
+.image images/rule2.png _ 500
+
+
+* Base movement
+
+- h - move left
+- j - move down
+- k - move up
+- l - move right
+
+
+* Vim movement
+
+- 7j : move 7 lines down.
+- w : move a word forward
+- ctrl + f : move down a page
+- ctrl + b : move up a page
+- gg : move to the top of the document
+- G : move to the bottomost of the document
+
+
+* Vim movement example
+.image images/move_down.png _ 800
+
+- Reletive number helps determine how many lines down
+- Vim key stroke: 8j
+
+* Vim editing
+- cc: change a line ( change is delete and go in insert mode )
+- ciw: change in a word (change the word where the cursor is on)
+- yy: yank a line ( yank is copy )
+- yiw: yank in a word
+- dd: delete whole line
+- diw: delete in a workd
+
+* Vim editing example
+.image images/hello_world.png
+
+- change in workd: ciw
+- type the new text, for example: newtext
+- escape: ESC
+- save: :w
+
+* Let's face it if can not avoid
+
+- Git
+.code git_squash
+
+
+
+* Kubernetes
+
+- Kubernetes
+.code kubernetes
+
+
+* Kubernetes secret
+
+- Kubernetes
+.code kubernetes-secret.yml
+
+- View kubernetes secret is not handy unless we have vim
+- Visual selected and call vim-base64 to decode it
+- vim combo after visual selected: ,atob
+
+
+* Vim plugins open a new world for vim
+
+- File system explorer (NerdTree)
+- File search (fzf)
+- Auto complete (youcompleteme)
+- Auto import (vim-go, phpactor, ...)
+- Show details for functions, variables (vim-go)
+- Go to defination (vim-go)
+- Tests (vim-test)
+- Git blame (vim-fugitive)
+- Git diff split (vim-fugitive)
+- Marks (vim-signature)
+- Linting (vim-php-cs-fixer)
+
+* NerdTree
+
+ :NERDTreeToggle  //shortcut can be configed and it is | in my case
+.image images/nerdtree.png _ 1000
+
+
+
+* FZF
+
+ :FZF //shortcut is ,f
+.image images/fzf2.png _ 1000
+
+
+
+* YouCompleteMe
+
+.image images/youcompleteme2.png _ 850
+
+
+
+* Auto import(phpactor)
+
+ :call phpactor#UseAdd()
+.image images/autoimport.png _ 650
+
+
+* Auto import(vim-go)
+
+ :w
+
+It will automatically import while saving. e.g.
+
+ import "fmt"  // automatically added while we have fmt.Println() added
+ ...
+ fmt.Println("hello world")
+
+
+
+
+
+* phpactor (hover and go to defintion)
+
+ ,i //show function defination
+ gd //to do defination
+.image images/hover2.png _ 650
+
+
+
+* vim-test (for many languages)
+
+ :TestNearest --debug   //shortcut is ,t
+.image images/vim-test.png _ 600
+
+
+
+
+* vim-test (for go)
+
+ :TestNearest --debug   //shorcut is ,t
+.image images/gotestcode.png _ 550
+.image images/gotest.png _ 450
+
+
+
+* vim-fugitive (Gblame)
+
+ :Gblame
+.image images/gblame.png _ 850
+
+
+
+* vim-fugitive (Gblame)
+
+ :Gblame
+.image images/gblame_details.png _ 850
+
+
+
+* vim-fugitive (Gvdiffsplit)
+
+ :Gvdiffsplit develop
+.image images/gvdiffsplit.png _ 850
+
+
+
+* vim-signature (colorful marks)
+
+- set a mark a:
+  ma
+- jump to mark a:
+  'a
+
+.image images/marks.png _ 600
+
+
+* vim-php-cs-fixer (linting)
+
+ :call PhpCsFixerFixFile()
+
+
+
+* php-cs-fixer (Let's build our own plugin)
+
+- The true power of vim
+ :call CsFixer()
+.code csfixer
+
+
+* Vim on terminal(tmux)
+.image images/tmux.png _ 800
+
+- Scrolling up and down hurts our hands. Using vim movement
+- ctrl + f : move down a page
+- ctrl + b : move up a page
+- :500: move to line 500
+- :10j: move 10 lines down
+
+* vim is everywhere
+- vimium (chrome plugin)
+.image images/vimium.png 900 900
+
+* Fun fact, vim is everywhere
+- slack-term
+.link https://github.com/erroneousboat/slack-term
+.image images/slack.png _ 800
+
+* Fun fact, vim everywhere
+- sqlectron
+.link https://sqlectron.github.io/
+.image images/sql.gif _ 800
+
+
+* Still learning
+.image images/still_learning.png _ 800
+
+
+* In summary
+The problem vim solves:
+
+- Improve efficiency
+- Ergonomics prevent most workplace injuries physically and mentally
+- A must-have tool for SRE
+
