@@ -1,0 +1,98 @@
+TLS and mTLS
+Security and Best Practice
+
+11 Jan 2023
+Tags: security, tls, mtls
+
+Author Yulin Tan
+Software Engineer & Site Reliability Engineer
+yulinsiyu@gmail.com
+
+
+* Agenda
+- What problems does TLS solve
+- How does TLS work
+- What does mTLS do additionally
+- Best Practice
+
+
+* Why TLS
+- Validate the server identity
+- Encrypt data between the client and the server
+
+* TLS connection
+- Client initiates the connection
+- The server sends back the public key
+- Client verifies the servers' certificate
+- The client creates a session keys and send to server
+- Connection established
+- Data encrypted by the session key between client and server
+
+
+* TLS connection
+.image images/tls-connection.png _ 900
+
+https://techcommunity.microsoft.com/t5/azure-paas-blog/ssl-tls-connection-issue-troubleshooting-guide/ba-p/2108065
+
+* Symmetric and Asymmetric encryption
+- Symmetric - single key for encryption and decryption
+- Asymmetric - public and private key for encryption and decription
+- TLS uses both
+
+* TLS key and cert
+- Create a certificate Signing request(CSR) and send it to Certificate Authority(CA)
+- CA verifies the ownership and issue the tls certificate
+
+.image images/ca.png _ 550
+https://www.ssl.com/faqs/what-is-a-certificate-authority/
+
+* Mutual TLS
+- Validate the server identity
+- Validate the client identity as well
+- Used in Zero Trust security framework
+
+* MTLS Connection (additional steps in bold)
+- Client initiates the connection
+- The server sends back the public key
+- Client verifies the servers' certificate
+- *Client* *presents* *its* *TLS* *certificate*
+- *Server* *veirfies* *the* *client's* *certificate*
+- *Server* *grants* *access*
+- Connection established
+
+* MTLS Connection
+.image images/mtls-connection.png _ 850
+
+
+* Best Practice
+- HTTPS everywhere such as webserver, mailserver, DNS, Kubernetes, object storage, ATM
+- Apply mTLS on all the device within an organization, such as Tesla car vs API server
+- Apply mTLS on the servicemesh across the internal microservices
+
+
+* Best Practice II
+- Choose a trusted CA
+- Set a CAA Record that can limit which ca can issue certificates
+- Stay alert for new vulnerabilities
+- Protect the private key and revoke certificate if private key is compromised
+- Only surrpot strong protocols and ciphers
+- Evaluate 3rd-party code for app dependencies
+
+* MTLS in Tesla
+- The organization(Tesla) acts as the certificate authority
+- Tesla API server loads private key, public key and ca all together in the tls config and turn the client auth on
+- Tesla issues key pairs for both client and server
+
+* Demo server side
+.play server.go /START OMIT/,/END OMIT/ HLxxx
+
+* Demo client side
+.play client.go /START OMIT/,/END OMIT/ HLxxx
+
+* In summary
+The problem TLS/mTLS solves:
+
+- Validate the identity
+- Encrypt data
+- Standard practice
+

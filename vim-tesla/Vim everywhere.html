@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://127.0.0.1:3999/vim-everything.slide#39 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Vim everywhere</title>
+    
+    <script>
+      var notesEnabled =  false ;
+    </script>
+    <script src="./Vim everywhere_files/slides.js"></script>
+
+    
+
+    <script>
+      
+      if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-11222381-6"]);
+        _gaq.push(["b._setAccount", "UA-49880327-6"]);
+        window.trackPageview = function() {
+          _gaq.push(["_trackPageview", location.pathname+location.hash]);
+          _gaq.push(["b._trackPageview", location.pathname+location.hash]);
+        };
+        window.trackPageview();
+        window.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction) {
+          _gaq.push(["_trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+          _gaq.push(["b._trackEvent", category, action, opt_label, opt_value, opt_noninteraction]);
+        };
+      }
+    </script>
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1"><meta name="apple-mobile-web-app-capable" content="yes"></head>
+
+  <body style="display: none" class="loaded">
+
+    <section class="slides layout-widescreen">
+
+      <article class="">
+        <h1>Vim everywhere</h1>
+        <h3>Increase productivity</h3>
+        
+        
+          <div class="presenter">
+            
+  
+  <p>
+    30 Nov 2022
+  </p>
+  
+
+          </div>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Author Yulin Tan
+  </p>
+  
+
+  
+  <p>
+    Software Engineer &amp; Site Reliability Engineer
+  </p>
+  
+
+          </div>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    
+  </p>
+  
+
+          </div>
+        
+      </article>
+
+  
+  
+      <article class="">
+      
+        <h3>Agenda</h3>
+        
+  <ul>
+  
+    <li>What is vim and why vim</li>
+  
+    <li>Vim movement</li>
+  
+    <li>Vim plugins</li>
+  
+    <li>Vim as a habit</li>
+  
+    <li>Vim is everywhere</li>
+  
+  </ul>
+
+      
+      <span class="pagenumber">2</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>What is Vim</h3>
+        
+  <ul>
+  
+    <li>Vim is a highly configurable text editor built to make creating and changing any kind of text very efficient</li>
+  
+    <li>Vim movement is more like a habit that can be used anywhere else including IDEs, Terminal and web brwosers</li>
+  
+  </ul>
+
+      
+      <span class="pagenumber">3</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Why vim</h3>
+        
+<div class="image">
+  <img src="./Vim everywhere_files/i_use_vim.png" width="550">
+</div>
+
+  
+  <p>
+    https://www.teepublic.com/t-shirt/30941967-i-use-vim-because-i-dont-know-how-to-quit-black-te
+  </p>
+  
+
+      
+      <span class="pagenumber">4</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Why vim</h3>
+        
+  <ul>
+  
+    <li>Default unix editor, unable to avoid. (VMs, git, docker containers...)</li>
+  
+    <li>Lightweight and portable. Config file .vimrc can be copied over.</li>
+  
+    <li>Cuting spending on IDE(Goland, PhpStorm, Pycharm, ...)</li>
+  
+    <li>Plugins (vim-go, vim-ruby...)</li>
+  
+  </ul>
+
+      
+      <span class="pagenumber">5</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Why I personally use Vim?</h3>
+        
+<div class="image">
+  <img src="./Vim everywhere_files/ergonomics.png" width="850">
+</div>
+
+      
+      <span class="pagenumber">6</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Learning Vim</h3>
+        
+  <ul>
+  
+    <li>Learning vim is fun because it's game-like</li>
+  
+    <li>Vim keystroke is pretty much the same as Street Fighter combos</li>
+  
+  </ul>
+
+<div class="image">
+  <img src="./Vim everywhere_files/street_fighter_2.png">
+</div>
+
+      
+      <span class="pagenumber">7</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Rule NO. 1</h3>
+        
+<div class="image">
+  <img src="./Vim everywhere_files/rule1.png" width="500">
+</div>
+
+      
+      <span class="pagenumber">8</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Rule NO. 2</h3>
+        
+<div class="image">
+  <img src="./Vim everywhere_files/rule2.png" width="500">
+</div>
+
+      
+      <span class="pagenumber">9</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Base movement</h3>
+        
+  <ul>
+  
+    <li>h - move left</li>
+  
+    <li>j - move down</li>
+  
+    <li>k - move up</li>
+  
+    <li>l - move right</li>
+  
+  </ul>
+
+      
+      <span class="pagenumber">10</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Vim movement</h3>
+        
+  <ul>
+  
+    <li>7j : move 7 lines down.</li>
+  
+    <li>w : move a word forward</li>
+  
+    <li>ctrl + f : move down a page</li>
+  
+    <li>ctrl + b : move up a page</li>
+  
+    <li>gg : move to the top of the document</li>
+  
+    <li>G : move to the bottomost of the document</li>
+  
+  </ul>
+
+      
+      <span class="pagenumber">11</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Vim movement example</h3>
+        
+<div class="image">
+  <img src="./Vim everywhere_files/move_down.png" width="800">
+</div>
+
+  <ul>
+  
+    <li>Reletive number helps determine how many lines down</li>
+  
+    <li>Vim key stroke: 8j</li>
+  
+  </ul>
+
+      
+      <span class="pagenumber">12</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Vim editing</h3>
+        
+  <ul>
+  
+    <li>cc: change a line ( change is delete and go in insert mode )</li>
+  
+    <li>ciw: change in a word (change the word where the cursor is on)</li>
+  
+    <li>yy: yank a line ( yank is copy )</li>
+  
+    <li>yiw: yank in a word</li>
+  
+    <li>dd: delete whole line</li>
+  
+    <li>diw: delete in a workd</li>
+  
+  </ul>
+
+      
+      <span class="pagenumber">13</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Vim editing example</h3>
+        
+<div class="image">
+  <img src="./Vim everywhere_files/hello_world.png">
+</div>
+
+  <ul>
+  
+    <li>change in workd: ciw</li>
+  
+    <li>type the new text, for example: newtext</li>
+  
+    <li>escape: ESC</li>
+  
+    <li>save: :w</li>
+  
+  </ul>
+
+      
+      <span class="pagenumber">14</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Let's face it if can not avoid</h3>
+        
+  <ul>
+  
+    <li>Git</li>
+  
+  </ul>
+
+  <div class="code">
+<pre><span num="1">pick da772ae34e Remove CI-683-fix-problem-with-plugin-error-create-logs FF</span>
+<span num="2">pick 6e04afddd4 Added new split order job</span>
+<span num="3">pick f5a653e932 big yikes but big necessary</span>
+<span num="4">pick 9a3ef149b9 CASHINT-221 Update get order endpoint example response</span>
+<span num="5">pick bae86a9ff6 Removing FF CASHINT-57-add-new-widget-positions</span>
+<span num="6">pick 0a3a492b79 CASHENT-158 : Add Eco fees in Order total to match the Shopify order 'total' and 'paid by customer'</span>
+<span num="7">pick f2172fd913 CASHENT-235: Create Order Split Policy and pass it as a required value in Plugin/Action/SetSplitOrderCondition, to add it to Order conditions</span>
+<span num="8">pick 26f2029431 CASHENT-186: Removed CASHENT-72-Add-field-to-display-line-item-properties-into-Cashier</span>
+<span num="9">pick bc604dbb55 fix shop-api tests</span>
+<span num="10">pick 351e74b01e fix go tests</span>
+<span num="11"></span>
+<span num="12"># Rebase 125cff3874..351e74b01e onto 125cff3874 (10 commands)</span>
+<span num="13">#</span>
+<span num="14"># Commands:</span>
+<span num="15"># p, pick = use commit</span>
+<span num="16"># r, reword = use commit, but edit the commit message</span>
+<span num="17"># e, edit = use commit, but stop for amending</span>
+<span num="18"># s, squash = use commit, but meld into previous commit</span>
+<span num="19"># f, fixup = like "squash", but discard this commit's log message</span>
+<span num="20"># x, exec = run command (the rest of the line) using shell</span>
+<span num="21"># d, drop = remove commit</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">15</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Kubernetes</h3>
+        
+  <ul>
+  
+    <li>Kubernetes</li>
+  
+  </ul>
+
+  <div class="code">
+<pre><span num="1">kubectl edit deployment webserver</span>
+<span num="2"></span>
+<span num="3">kubectl edit pods webserver</span>
+<span num="4"></span>
+<span num="5">kubectl edit svc webserver</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">16</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Kubernetes secret</h3>
+        
+  <ul>
+  
+    <li>Kubernetes</li>
+  
+  </ul>
+
+  <div class="code">
+<pre><span num="1">apiVersion: v1</span>
+<span num="2">data:</span>
+<span num="3">  tls.crt: dGVzdC1jcnQ=</span>
+<span num="4">  tls.key: dGVzdC1rZXk=</span>
+<span num="5">kind: Secret</span>
+<span num="6">metadata:</span>
+<span num="7">  creationTimestamp: "2022-11-24T03:24:39Z"</span>
+<span num="8">  name: forticloud.com</span>
+<span num="9">  namespace: faz</span>
+<span num="10">  resourceVersion: "304437113"</span>
+<span num="11">  uid: 27ef850f-c59b-4cda-9b2e-4a100cb12503</span>
+<span num="12">type: kubernetes.io/tls</span>
+</pre>
+</div>
+
+  <ul>
+  
+    <li>View kubernetes secret is not handy unless we have vim</li>
+  
+    <li>Visual selected and call vim-base64 to decode it</li>
+  
+    <li>vim combo after visual selected: ,atob</li>
+  
+  </ul>
+
+      
+      <span class="pagenumber">17</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Vim plugins open a new world for vim</h3>
+        
+  <ul>
+  
+    <li>File system explorer (NerdTree)</li>
+  
+    <li>File search (fzf)</li>
+  
+    <li>Auto complete (youcompleteme)</li>
+  
+    <li>Auto import (vim-go, phpactor, ...)</li>
+  
+    <li>Show details for functions, variables (vim-go)</li>
+  
+    <li>Go to defination (vim-go)</li>
+  
+    <li>Tests (vim-test)</li>
+  
+    <li>Git blame (vim-fugitive)</li>
+  
+    <li>Git diff split (vim-fugitive)</li>
+  
+    <li>Marks (vim-signature)</li>
+  
+    <li>Linting (vim-php-cs-fixer)</li>
+  
+  </ul>
+
+      
+      <span class="pagenumber">18</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>NerdTree</h3>
+        
+  
+  <div class="code"><pre>:NERDTreeToggle  //shortcut can be configed and it is | in my case</pre></div>
+  
+
+<div class="image">
+  <img src="./Vim everywhere_files/nerdtree.png" width="1000">
+</div>
+
+      
+      <span class="pagenumber">19</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>FZF</h3>
+        
+  
+  <div class="code"><pre>:FZF //shortcut is ,f</pre></div>
+  
+
+<div class="image">
+  <img src="./Vim everywhere_files/fzf2.png" width="1000">
+</div>
+
+      
+      <span class="pagenumber">20</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>YouCompleteMe</h3>
+        
+<div class="image">
+  <img src="./Vim everywhere_files/youcompleteme2.png" width="850">
+</div>
+
+      
+      <span class="pagenumber">21</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Auto import(phpactor)</h3>
+        
+  
+  <div class="code"><pre>:call phpactor#UseAdd()</pre></div>
+  
+
+<div class="image">
+  <img src="./Vim everywhere_files/autoimport.png" width="650">
+</div>
+
+      
+      <span class="pagenumber">22</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Auto import(vim-go)</h3>
+        
+  
+  <div class="code"><pre>:w</pre></div>
+  
+
+  
+  <p>
+    It will automatically import while saving. e.g.
+  </p>
+  
+
+  
+  <div class="code"><pre>import "fmt"  // automatically added while we have fmt.Println() added
+...
+fmt.Println("hello world")</pre></div>
+  
+
+      
+      <span class="pagenumber">23</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>phpactor (hover and go to defintion)</h3>
+        
+  
+  <div class="code"><pre>,i //show function defination
+gd //to do defination</pre></div>
+  
+
+<div class="image">
+  <img src="./Vim everywhere_files/hover2.png" width="650">
+</div>
+
+      
+      <span class="pagenumber">24</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>vim-test (for many languages)</h3>
+        
+  
+  <div class="code"><pre>:TestNearest --debug   //shortcut is ,t</pre></div>
+  
+
+<div class="image">
+  <img src="./Vim everywhere_files/vim-test.png" width="600">
+</div>
+
+      
+      <span class="pagenumber">25</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>vim-test (for go)</h3>
+        
+  
+  <div class="code"><pre>:TestNearest --debug   //shorcut is ,t</pre></div>
+  
+
+<div class="image">
+  <img src="./Vim everywhere_files/gotestcode.png" width="550">
+</div>
+
+<div class="image">
+  <img src="./Vim everywhere_files/gotest.png" width="450">
+</div>
+
+      
+      <span class="pagenumber">26</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>vim-fugitive (Gblame)</h3>
+        
+  
+  <div class="code"><pre>:Gblame</pre></div>
+  
+
+<div class="image">
+  <img src="./Vim everywhere_files/gblame.png" width="850">
+</div>
+
+      
+      <span class="pagenumber">27</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>vim-fugitive (Gblame)</h3>
+        
+  
+  <div class="code"><pre>:Gblame</pre></div>
+  
+
+<div class="image">
+  <img src="./Vim everywhere_files/gblame_details.png" width="850">
+</div>
+
+      
+      <span class="pagenumber">28</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>vim-fugitive (Gvdiffsplit)</h3>
+        
+  
+  <div class="code"><pre>:Gvdiffsplit develop</pre></div>
+  
+
+<div class="image">
+  <img src="./Vim everywhere_files/gvdiffsplit.png" width="850">
+</div>
+
+      
+      <span class="pagenumber">29</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>vim-signature (colorful marks)</h3>
+        
+  <ul>
+  
+    <li>set a mark a:
+ma</li>
+  
+    <li>jump to mark a:
+'a</li>
+  
+  </ul>
+
+<div class="image">
+  <img src="./Vim everywhere_files/marks.png" width="600">
+</div>
+
+      
+      <span class="pagenumber">30</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>vim-php-cs-fixer (linting)</h3>
+        
+  
+  <div class="code"><pre>:call PhpCsFixerFixFile()</pre></div>
+  
+
+      
+      <span class="pagenumber">31</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>php-cs-fixer (Let's build our own plugin)</h3>
+        
+  <ul>
+  
+    <li>The true power of vim
+:call CsFixer()</li>
+  
+  </ul>
+
+  <div class="code">
+<pre><span num="1">fun! CsFixer()</span>
+<span num="2">    exe '!./vendor/bin/php-cs-fixer fix -v ' . expand("%")</span>
+<span num="3">    exe 'edit!'</span>
+<span num="4">endfun</span>
+</pre>
+</div>
+
+      
+      <span class="pagenumber">32</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Vim on terminal(tmux)</h3>
+        
+<div class="image">
+  <img src="./Vim everywhere_files/tmux.png" width="800">
+</div>
+
+  <ul>
+  
+    <li>Scrolling up and down hurts our hands. Using vim movement</li>
+  
+    <li>ctrl + f : move down a page</li>
+  
+    <li>ctrl + b : move up a page</li>
+  
+    <li>:500: move to line 500</li>
+  
+    <li>:10j: move 10 lines down</li>
+  
+  </ul>
+
+      
+      <span class="pagenumber">33</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>vim is everywhere</h3>
+        
+  <ul>
+  
+    <li>vimium (chrome plugin)</li>
+  
+  </ul>
+
+<div class="image">
+  <img src="./Vim everywhere_files/vimium.png" height="900" width="900">
+</div>
+
+      
+      <span class="pagenumber">34</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Fun fact, vim is everywhere</h3>
+        
+  <ul>
+  
+    <li>slack-term</li>
+  
+  </ul>
+<p class="link"><a href="https://github.com/erroneousboat/slack-term" target="_blank">github.com/erroneousboat/slack-term</a></p>
+<div class="image">
+  <img src="./Vim everywhere_files/slack.png" width="800">
+</div>
+
+      
+      <span class="pagenumber">35</span>
+      </article>
+  
+  
+  
+      <article class="">
+      
+        <h3>Fun fact, vim everywhere</h3>
+        
+  <ul>
+  
+    <li>sqlectron</li>
+  
+  </ul>
+<p class="link"><a href="https://sqlectron.github.io/" target="_blank">sqlectron.github.io/</a></p>
+<div class="image">
+  <img src="./Vim everywhere_files/sql.gif" width="800">
+</div>
+
+      
+      <span class="pagenumber">36</span>
+      </article>
+  
+  
+  
+      <article class="far-past">
+      
+        <h3>Still learning</h3>
+        
+<div class="image">
+  <img src="./Vim everywhere_files/still_learning.png" width="800">
+</div>
+
+      
+      <span class="pagenumber">37</span>
+      </article>
+  
+  
+  
+      <article class="past">
+      
+        <h3>In summary</h3>
+        
+  
+  <p>
+    The problem vim solves:
+  </p>
+  
+
+  <ul>
+  
+    <li>Improve efficiency</li>
+  
+    <li>Ergonomics prevent most workplace injuries physically and mentally</li>
+  
+    <li>A must-have tool for SRE</li>
+  
+  </ul>
+
+      
+      <span class="pagenumber">38</span>
+      </article>
+  
+  
+
+      <article class="current">
+        <h3>Thank you</h3>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    30 Nov 2022
+  </p>
+  
+<p class="link"><a href="http://127.0.0.1:3999/vim-everything.slide#ZgotmplZ" target="_blank">Tags: productivity, vim, terminal</a></p>
+          </div>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    Author Yulin Tan
+  </p>
+  
+
+  
+  <p>
+    Software Engineer &amp; Site Reliability Engineer
+  </p>
+  
+<p class="link"><a href="mailto:yulinsiyu@gmail.com" target="_blank">yulinsiyu@gmail.com</a></p>
+          </div>
+        
+          <div class="presenter">
+            
+  
+  <p>
+    
+  </p>
+  
+
+          </div>
+        
+      </article>
+
+    <div class="slide-area" id="prev-slide-area"></div><div class="slide-area" id="next-slide-area"></div></section>
+
+    <div id="help" style="display: none;">
+      Use the left and right arrow keys or click the left and right
+      edges of the page to navigate between slides.<br>
+      (Press 'H' or navigate to hide this message.)
+    </div>
+
+    
+    <script src="./Vim everywhere_files/play.js"></script>
+    
+
+    <script>
+      (function() {
+        
+        if (window["location"] && window["location"]["hostname"] == "talks.golang.org") {
+          var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
+          ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
+        }
+      })();
+    </script>
+  
+
+<link rel="stylesheet" type="text/css" href="./Vim everywhere_files/css"><link rel="stylesheet" type="text/css" href="./Vim everywhere_files/styles.css"></body></html>
